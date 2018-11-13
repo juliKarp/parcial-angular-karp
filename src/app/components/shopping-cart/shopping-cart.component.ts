@@ -18,9 +18,7 @@ export class ShoppingCartComponent implements OnInit {
 
   constructor(private shoppingCartService: ShoppingCartService) {}
 
-  async ngOnInit() {
-    this.usuarioLogueado = await this.shoppingCartService.getUsuarioLogueado()
-    this.productos = await this.shoppingCartService.getProductos()
+  ngOnInit() {
   }
 
   aniadirAlCarrito(producto: Producto) {
@@ -41,9 +39,5 @@ export class ShoppingCartComponent implements OnInit {
 
   cantidadEnCarrito(producto: Producto) : number {
     return this.usuarioLogueado.shoppingCart.cantidadProducto(producto)
-  }
-
-  finalizarCompra() {
-    return this.usuarioLogueado.procesarCompra()
   }
 }

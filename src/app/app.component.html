@@ -1,1 +1,17 @@
-<app-shopping-cart></app-shopping-cart>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<a class="navbar-brand" href="#">
+    <fa-icon icon="shopping-cart"></fa-icon> e-changuito
+</a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
+    aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarCollapse">
+    <div class="navbar-nav mr-auto">
+    </div>
+
+    <span class="ml-auto navbar-text">{{usuarioLogueado.username}} - $ {{usuarioLogueado.saldo | number:'1.0-2'}}</span>
+
+</div>
+</nav>
+<router-outlet (activate)="componenteActivado($event)"></router-outlet>

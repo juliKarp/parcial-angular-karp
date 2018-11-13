@@ -10,13 +10,15 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPlus, faShoppingCart, faMinus } from '@fortawesome/free-solid-svg-icons'
 
 import { HttpModule } from '@angular/http';
+import { MiCompraComponent } from './components/mi-compra/mi-compra.component';
 
 library.add(faPlus, faShoppingCart, faMinus)
 
 @NgModule({
   declarations: [
     AppComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    MiCompraComponent
   ],
   imports: [
     BrowserModule,
