@@ -1,8 +1,9 @@
 export class Producto {
 
     titulo: string
+    descripcion: string
     precioUnitario: number
-    urlFoto: string
+    urlImagen: string
 
     static fromJSON(jsonProducto): Producto {
         var prod = new Producto() 

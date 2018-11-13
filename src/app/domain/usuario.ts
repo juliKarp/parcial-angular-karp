@@ -10,6 +10,14 @@ export class Usuario{
       this.username = username
     }
 
+    saldoInsuficiente() : boolean {
+      return this.shoppingCart.getTotal() > this.saldo
+    }
+    procesarCompra() {
+      this.saldo -= this.shoppingCart.getTotal()
+      this.shoppingCart = new ShoppingCart([])
+    }
+
     static fromJSON(usuarioJson): Usuario {
       var usuario = new Usuario(usuarioJson.username)
       usuario.saldo = usuarioJson.saldo

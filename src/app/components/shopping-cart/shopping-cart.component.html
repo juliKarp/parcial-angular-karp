@@ -10,7 +10,7 @@
     <div class="navbar-nav mr-auto">
     </div>
 
-    <span class="ml-auto navbar-text">jackNapier - $40000</span>
+    <span class="ml-auto navbar-text">{{usuarioLogueado.username}} - $ {{usuarioLogueado.saldo | number:'1.0-2'}}</span>
 
   </div>
 </nav>
@@ -23,33 +23,35 @@
       Productos
     </div>
 
-    <div class="card-body">
+    <div class="card-body" *ngFor="let producto of productos">
       <div class="row">
 
         <div class="col-12 col-sm-12 col-md-2 text-center">
-          <img class="img-fluid img-thumbnail" src="assets/images/galaxy-s9.png">
+          <img class="img-fluid img-thumbnail" [src]="producto.urlImagen">
         </div>
 
         <div class="col-12 col-sm-12 text-md-left col-md-6">
-          <h4 class="product-name"><strong>Samsung Galaxy s9</strong></h4>
+          <h4 class="product-name"><strong>{{producto.titulo}}</strong></h4>
           <h4>
-            <small>Galaxy s9</small>
+            <small>{{producto.descripcion}}</small>
           </h4>
         </div>
 
         <div class="col-12 col-sm-12 col-md-4 text-md-right row">
 
           <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-            <h6><strong>$ 33999</strong></h6>
+            <h6><strong>$ {{producto.precioUnitario | number:'1.0-2'}}</strong></h6>
           </div>
 
           <div class="col-9 col-sm-9 col-md-6">
             <div class="row">
-              <button type="button" class="btn btn-outline-success btn-xs">
+              <button type="button" (click)="aniadirAlCarrito(producto)" class="btn btn-outline-success btn-xs">
                 <fa-icon icon="plus"></fa-icon>
               </button>
               <span>&nbsp;</span>
-              <button type="button" class="btn btn-outline-danger btn-xs">
+              <h5>{{cantidadEnCarrito(producto)}}</h5>
+              <span>&nbsp;</span>
+              <button type="button" (click)="quitarDelCarrito(producto)" [disabled]="noHayEnCarrito(producto)" class="btn btn-outline-danger btn-xs">
                 <fa-icon icon="minus"></fa-icon>
               </button>
             </div>
@@ -68,11 +70,11 @@
       <div class="row">
 
         <div class="col">
-          Total: <b> $ 0</b>
+          Total: <b> $ {{usuarioLogueado.shoppingCart.getTotal() | number:'1.0-2'}}</b>
         </div>
 
         <div class="col">
-          <button class="btn btn-primary float-right">Finalizar Compra</button>
+          <button (click)="finalizarCompra()" [disabled]="noPuedeFinalizarCompra()" class="btn btn-primary float-right">Finalizar Compra</button>
         </div>
 
       </div>
