@@ -9,6 +9,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faPlus, faShoppingCart, faMinus } from '@fortawesome/free-solid-svg-icons'
 
+import { HttpModule } from '@angular/http';
+
 library.add(faPlus, faShoppingCart, faMinus)
 
 @NgModule({
@@ -19,7 +21,8 @@ library.add(faPlus, faShoppingCart, faMinus)
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

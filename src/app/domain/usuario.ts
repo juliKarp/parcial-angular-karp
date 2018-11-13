@@ -8,6 +8,7 @@ export class Usuario{
     
     constructor(username: string){
       this.username = username
+      this.shoppingCart = new ShoppingCart([])
     }
 
     saldoInsuficiente() : boolean {

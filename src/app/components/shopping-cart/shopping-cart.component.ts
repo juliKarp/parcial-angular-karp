@@ -13,15 +13,14 @@ import { Producto } from 'src/app/domain/producto';
 
 export class ShoppingCartComponent implements OnInit {
 
-  usuarioLogueado: Usuario
+  usuarioLogueado: Usuario = new Usuario("")
   productos: Array<Producto> = []
 
-  constructor(private shoppingCartService: ShoppingCartService) {
-    this.usuarioLogueado = shoppingCartService.getUsuarioLogueado()
-    this.productos = shoppingCartService.getProductos()
-  }
+  constructor(private shoppingCartService: ShoppingCartService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.usuarioLogueado = await this.shoppingCartService.getUsuarioLogueado()
+    this.productos = await this.shoppingCartService.getProductos()
   }
 
   aniadirAlCarrito(producto: Producto) {
